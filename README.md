@@ -1,98 +1,107 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🛍️ Platzi Store API - Proyecto con NestJS
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este es un proyecto backend desarrollado como parte del curso de **NestJS** en Platzi. La aplicación simula una tienda virtual y está enfocada en la creación de una API REST sólida, mantenible y escalable, siguiendo buenas prácticas de arquitectura y validación de datos.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🚀 Tecnologías utilizadas
 
-## Description
+- [NestJS](https://nestjs.com/)
+- Node.js
+- TypeScript
+- Express (por debajo de Nest)
+- Swagger (para documentación)
+- PostgreSQL (o base de datos elegida)
+- TypeORM / Prisma (dependiendo de implementación)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 📚 Temas abordados en el curso
 
-## Project setup
+Durante el desarrollo del proyecto se abordaron los siguientes conceptos y prácticas:
 
-```bash
-$ npm install
+- ✅ **Estructura de un proyecto NestJS**
+- ✅ **Creación de APIs RESTful**
+- ✅ **Controladores (`@Controller`) y rutas**
+- ✅ **Servicios (`@Injectable`) y lógica de negocio**
+- ✅ **Inyección de dependencias**
+- ✅ **Data Transfer Objects (DTOs) para validación de datos**
+- ✅ **Pipes de validación con `class-validator` y `class-transformer`**
+- ✅ **Manejo de errores con filtros (`@Catch`)**
+- ✅ **Uso de módulos (`@Module`) para organizar la arquitectura**
+- ✅ **Documentación de la API con Swagger**
+- ✅ **Uso de parámetros, query params y body en los endpoints**
+- ✅ **Middlewares y Guards**
+- ✅ **Principios SOLID y buenas prácticas**
+- ✅ **Conexión con base de datos relacional**
+
+## 🧱 Estructura del proyecto
+
+```
+src/
+├── app.module.ts
+├── main.ts
+├── products/
+│   ├── products.module.ts
+│   ├── products.controller.ts
+│   ├── products.service.ts
+│   ├── dtos/
+│   └── entities/
+├── users/
+│   └── ...
+└── common/
+    ├── filters/
+    └── guards/
 ```
 
-## Compile and run the project
+## 🔧 Instalación y ejecución
 
-```bash
-# development
-$ npm run start
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tuusuario/platzi-store-nest.git
+   cd platzi-store-nest
+   ```
 
-# watch mode
-$ npm run start:dev
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
 
-# production mode
-$ npm run start:prod
+3. Ejecuta el servidor en modo desarrollo:
+   ```bash
+   npm run start:dev
+   ```
+
+4. Accede a la documentación de la API en:
+   ```
+   http://localhost:3000/docs
+   ```
+
+## 📦 Endpoints disponibles (ejemplos)
+
+- `GET /products`: Lista todos los productos
+- `POST /products`: Crea un nuevo producto
+- `GET /products/:id`: Obtiene un producto por ID
+- `PUT /products/:id`: Actualiza un producto
+- `DELETE /products/:id`: Elimina un producto
+
+## ✅ Validaciones y DTOs
+
+Los datos enviados a los endpoints son validados usando **DTOs** y la librería `class-validator`. Esto permite asegurar que los datos sean correctos antes de llegar a la lógica del servicio.
+
+```ts
+export class CreateProductDto {
+  @IsString()
+  readonly name: string;
+
+  @IsNumber()
+  readonly price: number;
+}
 ```
 
-## Run tests
+## 🛡️ Buenas prácticas y arquitectura
 
-```bash
-# unit tests
-$ npm run test
+- Módulos organizados por dominio (Products, Users, etc.)
+- Separación de responsabilidades entre controlador, servicio y DTO
+- Validación automática de datos
+- Código limpio y reutilizable
 
-# e2e tests
-$ npm run test:e2e
+## 📌 Notas del curso
 
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Este proyecto fue desarrollado paso a paso siguiendo las lecciones del curso **"NestJS: Backend con Node.js y TypeScript"** de Platzi, con el objetivo de dominar los fundamentos y herramientas para crear APIs modernas en Node.js.
