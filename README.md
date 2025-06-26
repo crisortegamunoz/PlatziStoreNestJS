@@ -36,12 +36,13 @@ Durante el desarrollo del proyecto se abordaron los siguientes conceptos y prác
 ```
 src/
 ├── app.module.ts
+├── app.controller.ts
+├── app.controller.spec.ts
 ├── main.ts
-├── products/
-│   ├── products.module.ts
-│   ├── products.controller.ts
-│   ├── products.service.ts
-│   ├── dtos/
+├── controllers
+├── └── products/
+│       └── products.controller.ts
+│       └── products.controller.spec.ts
 │   └── entities/
 ├── users/
 │   └── ...
