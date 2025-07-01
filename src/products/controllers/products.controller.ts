@@ -1,8 +1,8 @@
 import { Controller, Get, Param, Post, Query, Body, Put, Delete, HttpStatus, HttpCode, Res } from '@nestjs/common';
 import { Response } from 'express'
-import { ProductsService } from '../../services/products/products.service';
+import { ProductsService } from '../services/products.service';
 import { ParseIntPipe } from '../../commons/pipe/parse-int/parse-int.pipe';
-import { CreateProductDto, UpdateProductDto } from '../../dto/product.dto'
+import { CreateProductDto, UpdateProductDto } from '../dtos/product.dto'
 
 @Controller('products')
 export class ProductsController {

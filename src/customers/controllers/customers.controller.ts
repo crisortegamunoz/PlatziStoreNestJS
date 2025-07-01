@@ -9,11 +9,11 @@ import {
     ParseIntPipe,
 } from '@nestjs/common';
 
-import { CustomersService } from '../../services/customers/customers.service';
-import { CreateCustomerDto, UpdateCustomerDto } from '../../dto/customer.dto';
+import { CustomersService } from '../services/customers.service';
+import { CreateCustomerDto, UpdateCustomerDto } from '../dtos/customer.dto';
 
 @Controller('customers')
-export class CustomerController {
+export class CustomersController {
     constructor(private customersService: CustomersService) { }
 
     @Get()
