@@ -10,6 +10,7 @@ import config from './config';
 import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 import { environments } from './commons/config/environments';
+import { DatabaseModule } from './database/database.module';
 
 const env = process.env.NODE_ENV ?? '.env';
 
@@ -27,7 +28,9 @@ const env = process.env.NODE_ENV ?? '.env';
     }),
     HttpModule,
     UsersModule,
-    ProductsModule],
+    ProductsModule,
+    DatabaseModule
+  ],
   controllers: [AppController],
   providers: [
     AppService,
