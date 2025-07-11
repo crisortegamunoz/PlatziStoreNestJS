@@ -13,7 +13,7 @@ export class BrandsService {
     return this.brandModel.find().exec();
   }
 
-  async findOne(id: string) {
+  async findOne(id: number) {
     const product = await this.brandModel.findOne({ _id: id }).exec();
     if (!product) {
       throw new NotFoundException(`Brand #${id} not found`);
@@ -26,7 +26,7 @@ export class BrandsService {
     return newBrand.save();
   }
 
-  async update(id: string, changes: UpdateBrandDto) {
+  async update(id: number, changes: UpdateBrandDto) {
     const product = await this.brandModel
       .findByIdAndUpdate(id, { $set: changes }, { new: true })
       .exec();
@@ -36,7 +36,7 @@ export class BrandsService {
     return product;
   }
 
-  remove(id: string) {
+  remove(id: number) {
     return this.brandModel.findByIdAndDelete(id);
   }
 }

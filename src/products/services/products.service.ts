@@ -11,6 +11,7 @@ import {
 
 @Injectable()
 export class ProductsService {
+  
   constructor(
     @InjectModel(Product.name) private productModel: Model<Product>,
   ) {}
